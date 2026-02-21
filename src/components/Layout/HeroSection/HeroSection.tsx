@@ -20,7 +20,7 @@ const HeroSection = () => {
                 </h1>
                 <p className={styles.desc}>A Frontend Developer</p>
                 <div className={styles.buttons}>
-                    <button className={styles.btnPrimary}>Hire Me</button>
+                    <a href="#contact" className={styles.btnPrimary}>Hire Me</a>
                 </div>
                 <div className={styles.socialLinks}>
                     <a href="#" className={styles.socialIcon} aria-label="GitHub">

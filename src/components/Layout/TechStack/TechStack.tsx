@@ -2,7 +2,7 @@ import { useInView } from '../../../hooks/useInView'
 import styles from './TechStack.module.css'
 
 const TechStack = () => {
-    const { ref, isInView } = useInView({ threshold: 0.2 })
+    const { ref, isInView } = useInView({ threshold: 0.4 })
 
     return (
         <section

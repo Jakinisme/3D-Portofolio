@@ -3,7 +3,7 @@ import { useInView } from '../../../hooks/useInView'
 import styles from './ContactSection.module.css'
 
 const ContactSection = () => {
-    const { ref, isInView } = useInView({ threshold: 0.2 })
+    const { ref, isInView } = useInView({ threshold: 0.4 })
 
     return (
         <section
