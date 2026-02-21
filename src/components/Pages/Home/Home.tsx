@@ -12,6 +12,8 @@ const Home = () => {
     return (
         <div className={styles.container}>
             <div className={styles.stars} />
+            <div className={styles.stars2} />
+            <div className={styles.stars3} />
             <Navbar />
 
             <div className={styles.canvasContainer}>

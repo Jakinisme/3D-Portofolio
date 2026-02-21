@@ -18,25 +18,72 @@
     pointer-events: auto;
 }
 
-.stars {
+.stars,
+.stars2,
+.stars3 {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
+    display: block;
     z-index: 0;
     pointer-events: none;
-    background:
-        radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(1px 1px at 30% 50%, rgba(255, 255, 255, 0.3), transparent),
-        radial-gradient(1px 1px at 50% 10%, rgba(255, 255, 255, 0.5), transparent),
-        radial-gradient(1px 1px at 70% 80%, rgba(255, 255, 255, 0.2), transparent),
-        radial-gradient(1px 1px at 90% 30%, rgba(255, 255, 255, 0.4), transparent),
-        radial-gradient(1.5px 1.5px at 15% 75%, rgba(255, 255, 255, 0.3), transparent),
-        radial-gradient(1px 1px at 85% 60%, rgba(255, 255, 255, 0.35), transparent),
-        radial-gradient(1px 1px at 40% 40%, rgba(255, 255, 255, 0.25), transparent),
-        radial-gradient(1.5px 1.5px at 60% 90%, rgba(255, 255, 255, 0.3), transparent),
-        radial-gradient(1px 1px at 25% 15%, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.stars {
+    width: 1.5px;
+    height: 1.5px;
+    background: transparent;
+    box-shadow:
+        12vw 15vh #fff, 24vw 35vh #fff, 36vw 10vh #fff, 48vw 55vh #fff, 60vw 20vh #fff,
+        72vw 75vh #fff, 84vw 30vh #fff, 16vw 80vh #fff, 96vw 5vh #fff, 64vw 45vh #fff,
+        4vw 95vh #fff, 28vw 5vh #fff, 52vw 90vh #fff, 76vw 45vh #fff, 82vw 65vh #fff,
+        14vw 30vh #fff, 26vw 60vh #fff, 34vw 85vh #fff, 46vw 10vh #fff, 54vw 50vh #fff,
+        66vw 15vh #fff, 74vw 95vh #fff, 86vw 40vh #fff, 94vw 70vh #fff, 2vw 25vh #fff,
+        40vw 40vh #fff, 10vw 10vh #fff, 90vw 90vh #fff, 20vw 80vh #fff, 80vw 20vh #fff;
+    animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.stars2 {
+    width: 2.5px;
+    height: 2.5px;
+    background: transparent;
+    box-shadow:
+        18vw 20vh #fff, 30vw 40vh #fff, 42vw 60vh #fff, 66vw 8vh #fff, 78vw 30vh #fff,
+        8vw 75vh #fff, 32vw 85vh #fff, 54vw 25vh #fff, 72vw 50vh #fff, 88vw 60vh #fff,
+        6vw 30vh #fff, 92vw 90vh #fff, 48vw 8vh #fff, 22vw 65vh #fff, 82vw 20vh #fff,
+        50vw 50vh #fff, 15vw 15vh #fff, 85vw 85vh #fff;
+    animation: twinkle 6s ease-in-out infinite alternate-reverse;
+}
+
+.stars3 {
+    width: 3.5px;
+    height: 3.5px;
+    background: transparent;
+    box-shadow:
+        7vw 50vh #fff, 22vw 15vh #fff, 53vw 45vh #fff, 78vw 70vh #fff, 93vw 25vh #fff,
+        18vw 80vh #fff, 42vw 10vh #fff, 68vw 85vh #fff, 82vw 55vh #fff, 12vw 35vh #fff;
+    animation: twinkle 10s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
 }
 
 .sections {
