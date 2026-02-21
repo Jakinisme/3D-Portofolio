@@ -103,9 +103,9 @@ export function Model(props: ThreeElements['group']) {
           ? currentBaseRotY - Math.PI / 8
           : currentBaseRotY + Math.PI / 6,
     posX: isTechStack ? 0 : 5,
-    posY: isHome ? 1 : 0,
+    posY: isHome ? 1 : 1,
     posZ: isTechStack ? 0 : -2,
-    groupScale: isTechStack ? 2.8 : 2.4,
+    groupScale: isTechStack ? 3.5 : 2.4,
     config: isTechStack
       ? { mass: 2, tension: 60, friction: 18 }
       : { mass: 1.5, tension: 80, friction: 20 },
