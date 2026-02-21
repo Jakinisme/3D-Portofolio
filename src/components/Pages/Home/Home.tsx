@@ -6,15 +6,18 @@ import HeroSection from "../../Layout/HeroSection";
 import TechStack from "../../Layout/TechStack";
 import ProjectSection from "../../Layout/ProjectSection";
 import ContactSection from "../../Layout/ContactSection";
+import PopupModal from "../../UI/PopupModal";
 import styles from "./Home.module.css";
 
 const Home = () => {
     return (
+        <main>
         <div className={styles.container}>
             <div className={styles.stars} />
             <div className={styles.stars2} />
             <div className={styles.stars3} />
             <Navbar />
+            <PopupModal />
 
             <div className={styles.canvasContainer}>
                 <Canvas
@@ -54,6 +57,7 @@ const Home = () => {
                 <ContactSection />
             </div>
         </div>
+        </main>
     );
 };
 

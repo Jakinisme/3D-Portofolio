@@ -5,6 +5,7 @@ import { useSpring, animated } from '@react-spring/three'
 import { useSectionContext } from '../../../context/useSectionContext'
 import type { Mesh, MeshStandardMaterial, Group, BufferGeometry } from 'three'
 import type { GLTF } from 'three-stdlib'
+import type { Skill } from '../../../context/types'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -32,9 +33,11 @@ interface AnimatedKeyProps {
   material: MeshStandardMaterial
   position: [number, number, number]
   delay: number
+  skillData?: Skill
+  onClick?: (skill: Skill) => void
 }
 
-const AnimatedKey = ({ geometry, material, position, delay }: AnimatedKeyProps) => {
+const AnimatedKey = ({ geometry, material, position, delay, skillData, onClick }: AnimatedKeyProps) => {
   const [visible, setVisible] = useState(false)
   const [hovered, setHovered] = useState(false)
   const [clicked, setClicked] = useState(false)
@@ -50,7 +53,14 @@ const AnimatedKey = ({ geometry, material, position, delay }: AnimatedKeyProps) 
     config: { mass: 1, tension: 180, friction: 12 },
   })
 
-  const handlePointerDown = useCallback(() => setClicked(true), [])
+  const handlePointerDown = useCallback((e: { stopPropagation: () => void }) => {
+    e.stopPropagation()
+    setClicked(true)
+    if (skillData && onClick) {
+      onClick(skillData)
+    }
+  }, [skillData, onClick])
+
   const handlePointerUp = useCallback(() => setClicked(false), [])
 
   return (
@@ -59,8 +69,15 @@ const AnimatedKey = ({ geometry, material, position, delay }: AnimatedKeyProps) 
       position-y={posY}
       position-z={position[2]}
       scale={scale}
-      onPointerOver={() => setHovered(true)}
-      onPointerOut={() => { setHovered(false); setClicked(false) }}
+      onPointerOver={() => {
+        setHovered(true)
+        if (skillData) document.body.style.cursor = 'pointer'
+      }}
+      onPointerOut={() => {
+        setHovered(false)
+        setClicked(false)
+        if (skillData) document.body.style.cursor = 'auto'
+      }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     >
@@ -72,7 +89,7 @@ const AnimatedKey = ({ geometry, material, position, delay }: AnimatedKeyProps) 
 export function Model(props: ThreeElements['group']) {
   const { nodes, materials } = useGLTF('/keyboard.glb') as unknown as GLTFResult
   const groupRef = useRef<Group>(null)
-  const { activeSection } = useSectionContext()
+  const { activeSection, setSelectedSkill, setIsModalOpen } = useSectionContext()
   const rotationRef = useRef(0)
 
 
@@ -111,6 +128,58 @@ export function Model(props: ThreeElements['group']) {
       : { mass: 1.5, tension: 80, friction: 20 },
   })
 
+  const handleKeyClick = useCallback((skill: Skill) => {
+    if (activeSection === 'Tech Stack') {
+      setSelectedSkill(skill)
+      setIsModalOpen(true)
+    }
+  }, [activeSection, setSelectedSkill, setIsModalOpen])
+
+  const skills: Record<string, Skill> = {
+    Key_05: {
+      title: 'Sveltekit',
+      description: 'Extensive experience in building modern web applications with Sveltekit. Proficient in hooks, context API, and performance optimization.',
+      icon: '🪶',
+      experience: '3 Months',
+      color: '#61dafb'
+    },
+    Key_01: {
+      title: 'React.js',
+      description: 'Extensive experience in building modern web applications with React. Proficient in hooks, context API, and performance optimization.',
+      icon: '⚛️',
+      experience: '1 Year',
+      color: '#fff'
+    },
+    Key_02: {
+      title: 'TypeScript',
+      description: 'Writing clean, type-safe code for robust applications. Deep understanding of advanced types and building scalable architectures.',
+      icon: '📘',
+      experience: '1 Years',
+      color: '#3178c6'
+    },
+    Key_03: {
+      title: 'CSS',
+      description: 'Creating smooth, physics-based animations with Framer Motion and React Spring to enhance user engagement. Visual storyteller.',
+      icon: '🟦',
+      experience: '1 Year',
+      color: '#ffffff'
+    },
+    Key_04: {
+      title: 'HTML',
+      description: 'I have a strong foundation in HTML and can create semantic, accessible, and well-structured web pages.',
+      icon: '🟧',
+      experience: '1 Year',
+      color: '#ff0066'
+    },
+    Key_06: {
+      title: 'Javascript',
+      description: 'Experienced in developing scalable frontend services, RESTful APIs, and real-time communication systems with Javascript.',
+      icon: '🟨',
+      experience: '1 Year',
+      color: '#339933'
+    }
+  }
+
   useFrame((state) => {
     if (groupRef.current) {
       groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.8) * 0.08
@@ -137,12 +206,12 @@ export function Model(props: ThreeElements['group']) {
             position={[-1.211, 0, -0.446]}
           />
 
-          <AnimatedKey delay={0.5} geometry={nodes.Key_05.geometry} material={materials['Material.007']} position={[-2.445, 0.477, -0.972]} />
-          <AnimatedKey delay={0.65} geometry={nodes.Key_01.geometry} material={materials['Material.006']} position={[-1.224, 0.477, -0.972]} />
-          <AnimatedKey delay={0.8} geometry={nodes.Key_02.geometry} material={materials['Material.008']} position={[0.011, 0.477, -0.972]} />
-          <AnimatedKey delay={0.95} geometry={nodes.Key_03.geometry} material={materials['Material.003']} position={[-2.445, 0.477, 0.104]} />
-          <AnimatedKey delay={1.1} geometry={nodes.Key_04.geometry} material={materials['Material.001']} position={[-1.224, 0.477, 0.104]} />
-          <AnimatedKey delay={1.25} geometry={nodes.Key_06.geometry} material={materials['Material.004']} position={[0.011, 0.477, 0.104]} />
+          <AnimatedKey delay={0.5} geometry={nodes.Key_05.geometry} material={materials['Material.007']} position={[-2.445, 0.477, -0.972]} skillData={skills.Key_05} onClick={handleKeyClick} />
+          <AnimatedKey delay={0.65} geometry={nodes.Key_01.geometry} material={materials['Material.006']} position={[-1.224, 0.477, -0.972]} skillData={skills.Key_01} onClick={handleKeyClick} />
+          <AnimatedKey delay={0.8} geometry={nodes.Key_02.geometry} material={materials['Material.008']} position={[0.011, 0.477, -0.972]} skillData={skills.Key_02} onClick={handleKeyClick} />
+          <AnimatedKey delay={0.95} geometry={nodes.Key_03.geometry} material={materials['Material.003']} position={[-2.445, 0.477, 0.104]} skillData={skills.Key_03} onClick={handleKeyClick} />
+          <AnimatedKey delay={1.1} geometry={nodes.Key_04.geometry} material={materials['Material.001']} position={[-1.224, 0.477, 0.104]} skillData={skills.Key_04} onClick={handleKeyClick} />
+          <AnimatedKey delay={1.25} geometry={nodes.Key_06.geometry} material={materials['Material.004']} position={[0.011, 0.477, 0.104]} skillData={skills.Key_06} onClick={handleKeyClick} />
         </group>
       </Center>
     </animated.group>
