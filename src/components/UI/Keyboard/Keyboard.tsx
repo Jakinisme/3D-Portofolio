@@ -1,15 +1,10 @@
-import { useGLTF } from "@react-three/drei"
 import { Center } from "@react-three/drei"
+import { Model } from "./Model"
 
 const Keyboard = () => {
-   const { scene } = useGLTF("/keyboard.glb")
-
   return (
     <Center>
-      <primitive
-        object={scene}
-        scale={5}
-      />
+      <Model scale={10} />
     </Center>
   )
 }
