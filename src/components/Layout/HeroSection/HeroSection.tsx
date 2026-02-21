@@ -23,10 +23,10 @@ const HeroSection = () => {
                     <a href="#Contact" className={styles.btnPrimary}>Hire Me</a>
                 </div>
                 <div className={styles.socialLinks}>
-                    <a href="#" className={styles.socialIcon} aria-label="GitHub">
+                    <a href="https://github.com/Jakinisme" className={styles.socialIcon} aria-label="GitHub">
                         <Github size={16} />
                     </a>
-                    <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/zaky-adwa-rifqi-a5663637b/" className={styles.socialIcon} aria-label="LinkedIn">
                         <Linkedin size={16} />
                     </a>
                 </div>

@@ -24,7 +24,7 @@ const ContactSection = () => {
                 </div>
 
                 <div className={styles.linksContainer}>
-                    <a href="mailto:adwashark@gmail.com" className={styles.contactCard}>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adwashark%40gmail.com" className={styles.contactCard}>
                         <div className={styles.cardIcon}>
                             <Mail size={24} />
                         </div>
