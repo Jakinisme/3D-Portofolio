@@ -22,7 +22,6 @@ const Navbar = () => {
             })
         }
 
-        // Initialize state on mount
         handleScroll()
 
         window.addEventListener('scroll', handleScroll)
