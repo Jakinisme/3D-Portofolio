@@ -31,7 +31,7 @@ const Home = () => {
                         shadow-mapSize-width={1024}
                         shadow-mapSize-height={1024}
                     />
-                    <pointLight position={[-5, 5, -5]} intensity={0.6} color="#8b5cf6" />
+                    <pointLight position={[-5, 5, -5]} intensity={0.6} color="#f0f0f0" />
                     <Environment preset="city" />
                     <Keyboard />
                     <ContactShadows

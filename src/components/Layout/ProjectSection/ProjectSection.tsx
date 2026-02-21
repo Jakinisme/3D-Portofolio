@@ -35,7 +35,7 @@ const projects = [
 ]
 
 const ProjectSection = () => {
-    const { ref, isInView } = useInView({ threshold: 0.1 })
+    const { ref, isInView } = useInView({ threshold: 0.40 })
 
     return (
         <section

@@ -1,0 +1,71 @@
+.techStack {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 6rem 5vw 4rem;
+    pointer-events: none;
+    text-align: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.content {
+    pointer-events: auto;
+    max-width: 600px;
+}
+
+.title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+.titleGradient {
+    background: linear-gradient(135deg, #ffffff 0%, #585858 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hint {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1024px) {
+    .techStack {
+        min-height: auto;
+        padding: 3rem 5vw;
+    }
+}

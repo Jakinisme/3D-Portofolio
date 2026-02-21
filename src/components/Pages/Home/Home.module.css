@@ -1,0 +1,46 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.canvasContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(1px 1px at 10% 20%, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1px 1px at 30% 50%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 50% 10%, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90% 30%, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1.5px 1.5px at 15% 75%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 85% 60%, rgba(255, 255, 255, 0.35), transparent),
+        radial-gradient(1px 1px at 40% 40%, rgba(255, 255, 255, 0.25), transparent),
+        radial-gradient(1.5px 1.5px at 60% 90%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 25% 15%, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.sections {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+}
